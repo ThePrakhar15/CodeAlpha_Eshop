@@ -87,24 +87,6 @@ Open index.html using Live Server or browser
 
 Make sure backend is running
 
-client/
- ├── index.html
- ├── product.html
- ├── cart.html
- ├── login.html
- ├── register.html
- ├── add-product.html
- ├── style.css
- ├── script.js
- ├── product.js
- ├── cart.js
-
-server/
- ├── routes/
- ├── models/
- ├── middleware/
- ├── server.js
-
 🔹Security Notes
 
 Passwords are hashed using bcrypt
