@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Product</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+<nav class="navbar">
+  <h3>E-Shop</h3>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart</a>
+    <a href="admin-products.html">My Products</a>
+  </div>
+</nav>
+
+<div class="center-box">
+  <div class="form-card">
+
+    <h2>Add New Product</h2>
+
+    <input id="name" placeholder="Product Name">
+    <input id="price" type="number" placeholder="Price">
+    <input id="image" placeholder="Image URL">
+    <textarea id="description" placeholder="Description"></textarea>
+
+    <button onclick="addProduct()">Add Product</button>
+
+  </div>
+</div>
+
+
+<script src="add-product.js"></script>
+</body>
+</html>

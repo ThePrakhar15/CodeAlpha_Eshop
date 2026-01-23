@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+<nav class="navbar">
+  <h3>E-Shop</h3>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+  </div>
+</nav>
+
+<div class="center-box">
+  <div class="form-card">
+    <h2>Register</h2>
+
+    <input id="name" placeholder="Name">
+    <input id="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+
+    <button onclick="register()">Register</button>
+  </div>
+</div>
+
+
+<script>
+function register() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  fetch("http://localhost:4000/api/auth/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ name, email, password })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("REGISTER RESPONSE:", data);
+
+    if (data.message && data.message !== "User registered successfully") {
+      alert(data.message);
+      return;
+    }
+
+    alert("Registered successfully. Now login.");
+    window.location.href = "login.html";
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Server error");
+  });
+}
+</script>
+
+
+</body>
+</html>
+ 

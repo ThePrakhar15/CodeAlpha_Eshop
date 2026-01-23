@@ -1,0 +1,227 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+}
+
+.navbar {
+  background: #222;
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h3 {
+  margin: 0;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* ===== AD ===== */
+.ad {
+  background: orange;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+input, textarea, select {
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+}
+
+
+button {
+  background: #0a74ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #055bd8;
+}
+
+
+.center-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.form-card {
+  background: white;
+  width: 350px;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+.form-card h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form-card input,
+.form-card textarea,
+.form-card select {
+  margin-bottom: 12px;
+}
+ 
+
+.cart-container {
+  padding: 30px;
+}
+
+.cart-summary {
+  margin-top: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: fit-content;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.cart-summary h3 {
+  margin-bottom: 10px;
+}
+
+.cart-remove {
+  background: #dc3545;
+  margin-top: 8px;
+}
+
+.cart-remove:hover {
+  background: #b52a37;
+}
+
+
+.product-page {
+  display: flex;
+  gap: 50px;
+  padding: 40px;
+  background: white;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.product-img img {
+  width: 320px;
+  object-fit: contain;
+}
+
+.product-info h3 {
+  color: #0a74ff;
+}
+
+
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* Tablets */
+@media (max-width: 900px) {
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-img img {
+    width: 250px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+
+/* Mobiles */
+@media (max-width: 600px) {
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  input {
+    width: 90%;
+  }
+
+  .box,
+  .form-card {
+    width: 90%;
+  }
+
+  .navbar h3 {
+    margin-bottom: 5px;
+  }
+
+  .navbar div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .product-info {
+    text-align: center;
+  }
+
+  .cart-container {
+    padding: 10px;
+  }
+
+  .card img {
+    height: 140px;
+  }
+
+
+}
+  .cart-summary {
+  text-align: center;
+  margin-top: 20px;
+}
