@@ -4,8 +4,8 @@
   <title>Register</title>
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
+
 <body>
 
 <nav class="navbar">
@@ -20,48 +20,54 @@
   <div class="form-card">
     <h2>Register</h2>
 
-    <input id="name" placeholder="Name">
-    <input id="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Password">
+    <input id="name" placeholder="Name"><br><br>
+    <input id="email" type="email" placeholder="Email"><br><br>
+    <input id="password" type="password" placeholder="Password"><br><br>
 
     <button onclick="register()">Register</button>
   </div>
 </div>
 
+<!-- CONFIG FIRST -->
+<script src="config.js"></script>
 
 <script>
 function register() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim().toLowerCase();
+  const password = document.getElementById("password").value.trim();
 
-  fetch("http://localhost:4000/api/auth/register", {
+  if (!name || !email || !password) {
+    alert("All fields are required");
+    return;
+  }
+
+  fetch(`${API_URL}/api/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ name, email, password })
   })
-  .then(res => res.json())
-  .then(data => {
-    console.log("REGISTER RESPONSE:", data);
+  .then(async (res) => {
+    const data = await res.json().catch(() => ({}));
 
-    if (data.message && data.message !== "User registered successfully") {
-      alert(data.message);
-      return;
+    if (!res.ok) {
+      throw new Error(data.message || "Registration failed");
     }
 
+    return data;
+  })
+  .then(() => {
     alert("Registered successfully. Now login.");
     window.location.href = "login.html";
   })
   .catch(err => {
     console.error(err);
-    alert("Server error");
+    alert(err.message || "Server error");
   });
 }
 </script>
 
-
 </body>
 </html>
- 

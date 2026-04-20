@@ -6,23 +6,45 @@ function addProduct() {
     return;
   }
 
-  const name = document.getElementById("name").value;
+  const name = document.getElementById("name").value.trim();
   const price = document.getElementById("price").value;
-  const image = document.getElementById("image").value;
-  const description = document.getElementById("description").value;
+  const image = document.getElementById("image").value.trim();
+  const category = document.getElementById("category").value.trim();
+  const description = document.getElementById("description").value.trim();
 
-  fetch("http://localhost:4000/api/products", {
+  // basic validation (you didn’t have any)
+  if (!name || !price || !image || !category || !description) {
+    alert("All fields are required");
+    return;
+  }
+
+  fetch(`${API_URL}/api/products`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Authorization": "Bearer " + token
     },
-    body: JSON.stringify({ name, price, image, description })
+    body: JSON.stringify({
+      name,
+      price,
+      image,
+      category,
+      description
+    })
   })
-  .then(res => res.json())
-  .then(() => {
-    alert("Product added");
-    location.href = "index.html";
-  })
-  .catch(err => console.error(err));
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+
+      if (data.message) {
+        alert(data.message);
+      } else {
+        alert("Product added successfully");
+        window.location.href = "index.html";
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Something went wrong");
+    });
 }

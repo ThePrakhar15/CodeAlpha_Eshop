@@ -1,0 +1,1 @@
+const API_URL = "https://codealpha-eshop-ov2g.onrender.com";
